@@ -1,5 +1,4 @@
-`include "control_constants.v"
-
+`include "alu.vh"
 module alu(
     input           [3:0]   op,
     input   signed  [31:0]  rs1,
@@ -10,12 +9,11 @@ module alu(
 
 always @(*) begin
     case (op)
-        `ALU_SLL:   rd = rs1 << rs2;
-        `ALU_SRL:   rd = rs1 >> rs2;
-        `ALU_SRA:   rd = rs1 >>> rs2;
+        `ALU_SLL:   rd = rs1 << $unsigned(rs2);
+        `ALU_SRL:   rd = rs1 >> $unsigned(rs2);
+        `ALU_SRA:   rd = rs1 >>> $unsigned(rs2);
         `ALU_ADD:   {overflow,rd} = rs1 + rs2;
         `ALU_SUB:   {overflow,rd} = rs1 - rs2;
-        //`ALU_LUI
         `ALU_SLT:   rd = {31'b0, rs1 < rs2};
         `ALU_SLTU:  rd = {31'b0,  $unsigned(rs1) < $unsigned(rs2)};
         `ALU_SEQ:   rd = {31'b0, rs1 == rs2};
@@ -24,7 +22,7 @@ always @(*) begin
         `ALU_AND:   rd = rs1 & rs2;
         `ALU_MUL:   rd = rs1 * rs2;
 
-        default:    rd = 32'b0;
+        default:    rd = 32'hxxxx_xxxx;
     endcase
 end
 
