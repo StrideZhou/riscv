@@ -14,16 +14,16 @@ vmap work work
 # Compiling
 #================================================================
 vlog *.v
-vlog *.sv
+
 
 #================================================================
 # Simulation settings
 #================================================================
 # Set top and no optimization
-vsim -voptargs=+acc work.test
+vsim -voptargs="+acc" work.ins_mod_tb 
 
 # Add waves
-do wave.do
+do  wave.do
 
 # Run simulation
-run -all
+run 800ns
