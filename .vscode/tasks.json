@@ -1,0 +1,20 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "vlog build",
+            "type": "shell",
+            "command": [
+                // "vlib work ;",
+                "vlog -sv -nologo -quiet *.v;",
+                // "vsim -quiet -debugDB -voptargs=+acc work.test -do wave.do "
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
