@@ -9,7 +9,7 @@ module inst_decoder(
     output  [4:0]  inst_rd,
     output  [4:0]  inst_rs1,
     output  [4:0]  inst_rs2,
-    output reg     rd_wen,
+    output reg     rd_wen, //rd exist (write enable)
 
     output reg signed [31:0] imm,   //! maybe signed immediate 
  // output reg        [31:0] imm_u, //unsign immediate
