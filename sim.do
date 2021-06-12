@@ -17,10 +17,10 @@ vlog *.v
 vlog *.sv
 
 #================================================================
-# Simulation settings
+# Simulation settings 2020.4
 #================================================================
-# Set top and no optimization
-vsim -voptargs=+acc work.test
+
+vsim -quiet -debugDB -voptargs=+acc work.test
 
 # Add waves
 do wave.do
