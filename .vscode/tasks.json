@@ -12,6 +12,22 @@
                 "vlog -sv -nologo -quiet *.sv;",
                 "vsim -c -quiet -debugDB -voptargs=+acc work.test -do exit "
             ],
+            // "problemMatcher": { //for vsim
+            //     "owner": "verilog",
+            //     "fileLocation": [
+            //         "relative"
+            //     ],
+            //     "pattern": [
+            //         {
+            //             //"regexp": "^(.*):(\\d+):\\s+(.*)$",
+            //             "regexp": "^\\*\\* (((Error)|(Warning))( \\(suppressible\\))?: )(\\([a-z]+-[0-9]+\\) )?([^\\(]*)\\(([0-9]+)\\): (\\([a-z]+-[0-9]+\\) )?((((near|Unknown identifier|Undefined variable):? )?[\"\']([\\w:;\\.]+)[\"\'][ :.]*)?.*)",
+            //             "severity": 2,
+            //             "file": 7,
+            //             "line": 8,
+            //             "message": 10
+            //         }
+            //     ]
+            // },
             "group": {
                 "kind": "build",
                 "isDefault": true
