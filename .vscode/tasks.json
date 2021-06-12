@@ -9,7 +9,8 @@
             "command": [
                 // "vlib work ;",
                 "vlog -sv -nologo -quiet *.v;",
-                // "vsim -quiet -debugDB -voptargs=+acc work.test -do wave.do "
+                "vlog -sv -nologo -quiet *.sv;",
+                "vsim -c -quiet -debugDB -voptargs=+acc work.test -do exit "
             ],
             "group": {
                 "kind": "build",
