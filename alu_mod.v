@@ -30,7 +30,8 @@ inst_decoder alu_inst_decoder(
     .inst_opcode ( inst_opcode ),
     .inst_funct3 ( inst_funct3 ),
     .inst_funct7 ( inst_funct7 ),
-    .imm         ( imm         )
+    .imm         ( imm         ),
+    .imm_valid   ( imm_valid   )
 );
 //alu
 reg    [ 3:0]  alu_op;
@@ -51,7 +52,7 @@ alu u_alu(
 always @(*) begin
     alu_op = `ALU_ADD; //default op & others
     alu_rs1 = rs1_data;
-    alu_rs2 = rs2_data;
+    alu_rs2 = imm_valid ? imm : rs2_data;
     rd_data = alu_rd;
     br_en   = 1'b0;
     // br_addr = 32'd0;
@@ -75,11 +76,11 @@ always @(*) begin
 
         `OPCODE_ALU_IMM:begin
             alu_op = {1'b0, inst_funct3}; //? magic refer alu.vh
-            alu_rs2 = imm;
+            // alu_rs2 = imm;
             case(inst_funct3)
-                `FUNC3_SLTU: alu_rs2 = imm;//! unsigned immediate 
+                // `FUNC3_SLTU: alu_rs2 = imm;//! unsigned immediate 
                 `FUNC3_SRx: begin
-                    alu_rs2 = imm;         //! unsigned immediate 
+                    // alu_rs2 = imm;         //! unsigned immediate 
                     case (inst_funct7)
                         `FUNC7_SxA: alu_op = `ALU_SRA;
                     endcase
@@ -88,13 +89,14 @@ always @(*) begin
         end
 
         `OPCODE_LOAD,`OPCODE_STORE:begin //caculate dmem adress
-            alu_rs2 = imm;               //note:2021年6月11日06点28分
+            // alu_rs2 = imm;               //note:2021年6月11日06点28分
         end
 
         `OPCODE_BRANCH:begin
-            alu_op = `ALU_SEQ;
+            alu_op = `ALU_SEQ;  //use alu caculate wiether equ or not
+            alu_rs2 = rs2_data; //caculate rs1 rs2
             rd_data = imm + $signed({1'b0, pc});//caculate branch adress
-            br_en   = alu_rd[0];
+            br_en   = alu_rd[0]; //branch if condition true 
             case(inst_funct3)
                 `FUNC3_BEQ:  ;
                 `FUNC3_BNE:  br_en   = ~alu_rd[0];
