@@ -105,7 +105,7 @@ always @(*) begin
 		end
 		default:begin 
 			d = wdata;
-			bwen = 32'h0000_0000;
+			bwen = 32'h0000_0000; // looks like do nothing
 		end
 	endcase
 end

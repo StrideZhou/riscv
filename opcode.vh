@@ -31,9 +31,13 @@
 `define FUNC7_SxA      7'b0100000
 
 // "funct3" field for load store
-`define FUNC3_ldstb     3'b000
-`define FUNC3_ldsth     3'b001
-`define FUNC3_ldstw     3'b010
-`define FUNC3_ldstbu    3'b100
-`define FUNC3_ldsthu    3'b101
-`define FUNC3_ldstwu    3'b110
+`define FUNC3_SB     3'b000
+`define FUNC3_SH     3'b001
+`define FUNC3_SW     3'b010
+
+`define FUNC3_LB     3'b000
+`define FUNC3_LH     3'b001
+`define FUNC3_LW     3'b010
+`define FUNC3_LBU    3'b100
+`define FUNC3_LHU    3'b101
+`define FUNC3_LWU    3'b110
