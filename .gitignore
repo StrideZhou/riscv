@@ -1,5 +1,7 @@
 work/
 riscv测试case/
+riscv.*
+!riscv.hex
 vsim.dbg
 vsim.wlf
 transcript

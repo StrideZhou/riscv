@@ -7,13 +7,13 @@ module core (
     input  exIns_valid,
     input  [31:0]exIns_in,
     output exIns_ren,
-    output [31:0]exIns_addr,
+    output [31:0]exIns_addr
 
     //!for debug
     /* pc */
-    output   [31:0]  pc,
+//    output   [31:0]  pc,
     /* 32-bits instruction  out*/
-    output   [31:0]  inst
+//    output   [31:0]  inst
 );
 
 //* pip stage 1  ---------------------------------------
@@ -21,8 +21,8 @@ module core (
     wire [31:0] ins_br_addr;
     wire [31:0] pc_r1,inst_r1;
     wire        stall = 0;
-//  wire pc;
-//  wire inst;
+    wire pc;
+    wire inst;
 
 ins_mod ins_mod(
     .clk         ( clk         ),
