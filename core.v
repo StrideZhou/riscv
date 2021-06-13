@@ -20,6 +20,7 @@ module core (
     wire        ins_br_en = 0;
     wire [31:0] ins_br_addr = 0;
     wire [31:0] pc_r1;
+    wire        stall = 0;
 //  wire pc;
 //  wire inst;
 
@@ -27,7 +28,7 @@ ins_mod ins_mod(
     .clk         ( clk         ),
     .nrst        ( nrst        ),
 
-    .stall       ( 1'b0        ),
+    .stall       ( stall       ),
 
     .br_en       ( ins_br_en   ),
     .br_addr     ( ins_br_addr ),
