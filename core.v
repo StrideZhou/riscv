@@ -89,13 +89,13 @@ alu_mod alu_mod(
 inst_decoder mem_inst_decoder(
     .inst        ( inst_r2        ),
     .inst_rd     ( rd_addr_r2     ),
-    .rd_wen      ( rd_wen_r2     ),
+    .rd_wen      ( rd_wen_r2      ),
     .inst_funct3 ( inst_funct3_r2 ),
-    .mem_opcode  ( mem_opcode_r2 ),
+    .mem_opcode  ( mem_opcode_r2  ),
     .mem_rdata_valid(mem_rdata_valid_r2)
 );
 
-assign dmem_rwaddr = alu_rd_data_r2 > {21'b0, 11'b1} ? 32'b1 : alu_rd_data_r2;
+assign dmem_rwaddr = alu_rd_data_r2 > {21'b0, 11'b1} ? 32'hffff_ffff : alu_rd_data_r2;
 dmem_mod dmem_mod(
     .clk         ( clk         ),
     .nrst        ( nrst        ),
@@ -114,7 +114,7 @@ assign br_addr_r2 = alu_rd_data_r2; // alu_rd_data contain all(branch) adress
 syn_reg#(.W (  1 ))     br_en_reg3  ( clk,nrst,1'd1, br_en_r2  , br_en_r3   );
 syn_reg#(.W ( 32 ))     br_addr_reg3( clk,nrst,1'd1, br_addr_r2, br_addr_r3 );
 syn_reg#(.W (  5 ))     rd_addr_reg3( clk,nrst,1'd1, rd_addr_r2, rd_addr_r3 );
-syn_reg#(.W (  1 ))     rd_wen_reg3 ( clk,nrst,1'd1, rd_wen_r2 , rd_wen_r3   );
+syn_reg#(.W (  1 ))     rd_wen_reg3 ( clk,nrst,1'd1, rd_wen_r2 , rd_wen_r3  );
 syn_reg#(.W (  1 ))     mem_rdata_valid_reg3 ( clk,nrst,1'd1, mem_rdata_valid_r2 , mem_rdata_valid_r3   );
 
 //*pip stage ----------write back---------------------
