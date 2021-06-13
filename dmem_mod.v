@@ -4,7 +4,7 @@ module dmem_mod (
 	input        clk,
 	input		 nrst,
 	input		 stall,
-    
+
 	input [2:0]  inst_funct3,
     input [2:0]  mem_opcode,
 
@@ -22,7 +22,7 @@ memory dmem(
 
     .op_code ( mem_opcode ),
 
-    .rwaddr  ( rwaddr     ),
+    .rwaddr  ( rwaddr[10:0]),
     .wdata   ( wdata      ),
     .rdata   ( mem_rdata  ) // always signed
 );
