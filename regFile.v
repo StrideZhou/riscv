@@ -11,8 +11,8 @@ module regFile #(
     input   [4:0]   wadd,
     input   [W:0]   wdata,
 
-    output  [W:0]   rs1,    //output register values
-    output  [W:0]   rs2
+    output reg [W:0]   rs1,    //output register values
+    output reg [W:0]   rs2
 );
 
 reg [W:0] reg_file [0:N]; // the register file
@@ -32,7 +32,14 @@ always @(posedge clk or negedge nrst) begin
     end
 end
 
-assign rs1 = reg_file[radd1];
-assign rs2 = reg_file[radd2];
+
+
+always @(posedge clk or negedge nrst) begin 
+    if (~nrst) ;
+    else begin 
+        rs1 <= reg_file[radd1];
+        rs2 <= reg_file[radd2];
+    end
+end
 
 endmodule
