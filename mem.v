@@ -15,7 +15,7 @@ input[7:0]a;
 input[31:0]d;
 output reg [31:0]q;
 
-reg [31:0]mem[255:0];    //1KB memory;
+reg [31:0]mem[0:255];    //1KB memory;
 
 always@ (posedge clk)begin
     if(cen == 1)begin
