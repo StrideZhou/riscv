@@ -9,13 +9,14 @@ module inst_decoder(
     output  [4:0]  inst_rd,
     output  [4:0]  inst_rs1,
     output  [4:0]  inst_rs2,
-    output reg     rd_wen, //rd exist (write enable)
-
+    output reg     rd_wen,     //rd in instruction exist (write enable)
+ 
     output reg signed [31:0] imm,   //! maybe signed immediate 
  // output reg        [31:0] imm_u, //unsign immediate
     output reg               imm_valid,
 
-    output reg        [2:0]  mem_opcode
+    output reg        [2:0]  mem_opcode,
+    output reg               mem_rdata_valid
 );
 
     assign inst_opcode = inst[ 6: 0];
@@ -31,6 +32,7 @@ module inst_decoder(
         imm_valid = 1'b1;
         rd_wen = 1'b1;
         mem_opcode = `MemDoNothing;
+        mem_rdata_valid = 1'b0;
         case (inst_opcode)
             `OPCODE_STORE:begin  //  S-type immediate
                 imm   = { {21{inst[31]}}, inst[30:25], inst[11:7] };
@@ -42,6 +44,7 @@ module inst_decoder(
                 imm   = { {21{inst[31]}}, inst[30:20] };
                 ////imm_u = { 20'd0, inst[31:20] };
                 mem_opcode = { 1'b1, inst_funct3[1:0]}; //? magic refer to mem.vh
+                mem_rdata_valid = 1'b1;
             end
             `OPCODE_BRANCH:begin //  B-type immediate
                 imm   = { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
