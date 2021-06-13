@@ -1,0 +1,11 @@
+// memory data file (do not edit the following line - required for mem load use)
+// instance=/test/u_core/regFile/reg_file
+// format=hex addressradix=h dataradix=h version=1.0 wordsperline=4
+ @0 00000000 745673c6 29868873 f0c50cff 
+ @4 894498ec 71f28ccd 858ba7ab c41f1efb 
+ @8 6a9e3146 7fffffff 80000001 6231a9e8 
+ @c 0cde738d e0f7655a 5f92e263 cc23379f 
+@10 7c4c979a afb65d32 b500d7b7 dba31458 
+@14 130a295a c612495d ab105317 3a857ae9 
+@18 3845d8d4 dbdaacb2 3d0cd0c6 a769aeb4 
+@1c 32454611 6c40dd82 5f874641 ffffffb0 

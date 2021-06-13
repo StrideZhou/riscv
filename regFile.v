@@ -16,14 +16,15 @@ module regFile #(
 );
 
 reg [W:0] reg_file [0:N]; // the register file
-integer i;
+
+genvar i;
+generate for (i=0; i<32; i=i+1) 
+    always @(negedge nrst) 
+        if (~nrst) reg_file[i] <= 32'b0;
+endgenerate 
 
 always @(posedge clk or negedge nrst) begin 
-    if (~nrst) begin
-        for (i=0; i<32; i=i+1) begin
-            reg_file[i] <= 32'b0;
-        end
-    end
+    if (~nrst) ;
     else if (wen) begin // not write to reg0
         if(wadd != 5'b0) begin
             reg_file[wadd] <= wdata;
