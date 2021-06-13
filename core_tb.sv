@@ -24,7 +24,7 @@ module test;
             #1 clk = ~clk;
         end
     end
-integer i;
+    integer i;
     initial begin
         $readmemh( "riscv.hex", u_core.ins_mod.imem.mem1.mem );
         
@@ -35,7 +35,10 @@ integer i;
 
         #470 $stop; 
     end
-    
+
+    always @(posedge clk ) begin
+        if (pc == 32'h0000_033c) $stop;
+    end
 core u_core(
     .clk          ( clk         ),
     .nrst         ( nrst        ),
