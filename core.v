@@ -17,8 +17,8 @@ module core (
 );
 
 //* pip stage 1  ---------------------------------------
-    wire        ins_br_en = 0;
-    wire [31:0] ins_br_addr = 0;
+    wire        ins_br_en;
+    wire [31:0] ins_br_addr;
     wire [31:0] pc_r1;
     wire        stall = 0;
 //  wire pc;
@@ -69,9 +69,9 @@ syn_reg#(.W ( 32 ))       pc_reg2( clk,nrst,1'd1, pc_r1, pc_r2   );
 syn_reg#(.W ( 32 ))     inst_reg2( clk,nrst,1'd1, inst , inst_r2 );
 
 //* pip stage 3  ---------------------------------------
-wire         br_en_r3,rd_wen;
-wire  [31:0] alu_rd_data,rdata;
-wire  [2:0]  inst_funct3,mem_opcode;
+wire         br_en_r3,rd_wen_r3;
+wire  [31:0] alu_rd_data,mem_rdata,dmem_rwaddr;
+wire  [2:0]  inst_funct3_r3,mem_opcode_r3;
 alu_mod alu_mod(
     .inst     ( inst_r2    ),
     .rs1_data ( rs1_data   ),
@@ -82,10 +82,10 @@ alu_mod alu_mod(
 );
 
 inst_decoder mem_inst_decoder(
-    .inst        ( inst_r2     ),
-    .rd_wen      ( rd_wen      ),
-    .inst_funct3 ( inst_funct3 ),
-    .mem_opcode  ( mem_opcode  )
+    .inst        ( inst_r2        ),
+    .rd_wen      ( rd_wen_r3      ),
+    .inst_funct3 ( inst_funct3_r3 ),
+    .mem_opcode  ( mem_opcode_r3  )
 );
 
 
@@ -94,20 +94,21 @@ dmem_mod dmem_mod(
     .nrst        ( nrst        ),
     .stall       ( stall       ),
 
-    .inst_funct3 ( inst_funct3 ),
-    .mem_opcode  ( mem_opcode  ),
+    .inst_funct3 ( inst_funct3_r3 ),
+    .mem_opcode  ( mem_opcode_r3  ),
 
-    .rwaddr      ( alu_rd_data > 11'b1 ? 11'b1 : alu_rd_data[11:0]),
-    .wdata       ( rs2_data    ),
-    .rdata       ( rdata       )
+    .rwaddr      ( dmem_rwaddr    ),
+    .wdata       ( rs2_data       ),
+    .rdata       ( mem_rdata      )
 );
 
 
 assign ins_br_en   = br_en_r3;
 assign ins_br_addr = alu_rd_data;
 
-assign rf_wen   = rd_wen;
-assign rf_wdata = rdata;
+assign rf_wen   = rd_wen_r3;
+assign rf_wdata = mem_rdata;
 assign rf_wadd  = alu_rd_data;
+assign dmem_rwaddr = alu_rd_data > {21'b0, 11'b1} ? 32'b1 : alu_rd_data;
 
 endmodule

@@ -14,19 +14,25 @@ module test;
     /* Init clk and nrst */
     initial begin
         nrst = 1'b1;
-        #1 nrst = 1'b0;
-        #2 nrst = 1'b1;
+        #0 nrst = 1'b0;
+        #1 nrst = 1'b1;
     end
 
     initial begin
-        clk = 1'b0;
+        clk = 1'b1;
         forever begin
             #1 clk = ~clk;
         end
     end
-
+integer i;
     initial begin
         $readmemh( "riscv.hex", u_core.ins_mod.imem.mem1.mem );
+        
+        for (i=0; i<255; i=i+1) begin
+            u_core.dmem_mod.dmem.mem1.mem[i] = 32'b0;
+            u_core.dmem_mod.dmem.mem2.mem[i] = 32'b0;
+        end
+
         #470 $stop; 
     end
     
