@@ -99,7 +99,7 @@ inst_decoder mem_inst_decoder(
     .mem_rdata_valid(mem_rdata_valid_r2)
 );
 
-assign dmem_rwaddr = alu_rd_data_r2 > {21'b0, 11'b1} ? 32'hffff_ffff : alu_rd_data_r2;
+assign dmem_rwaddr = alu_rd_data_r2;// alu_rd_data contain all(dmem) adress 
 dmem_mod dmem_mod(
     .clk         ( clk         ),
     .nrst        ( nrst        ),
