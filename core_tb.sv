@@ -28,7 +28,7 @@ module test;
     initial begin
         $readmemh( "riscv.hex", u_core.ins_mod.imem.mem1.mem );
         
-        for (i=0; i<255; i=i+1) begin
+        for (i=0; i<256; i=i+1) begin
             u_core.dmem_mod.dmem.mem1.mem[i] = 32'b0;
             u_core.dmem_mod.dmem.mem2.mem[i] = 32'b0;
         end

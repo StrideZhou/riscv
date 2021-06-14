@@ -45,16 +45,10 @@ add wave -noupdate /test/u_core/br_addr_r3
 add wave -noupdate /test/u_core/rd_addr_r3
 TreeUpdate [SetDefaultTree]
 quietly WaveActivateNextPane
-add wave -noupdate /test/u_core/regFile/nrst
-add wave -noupdate /test/u_core/regFile/clk
-add wave -noupdate /test/u_core/regFile/radd1
-add wave -noupdate /test/u_core/regFile/radd2
 add wave -noupdate /test/u_core/regFile/wen
 add wave -noupdate /test/u_core/regFile/wadd
 add wave -noupdate /test/u_core/regFile/wdata
-add wave -noupdate /test/u_core/regFile/rs1
-add wave -noupdate /test/u_core/regFile/rs2
-add wave -noupdate -format Event -height 60 /test/u_core/regFile/reg_file
+add wave -noupdate -format Event /test/u_core/regFile/reg_file
 TreeUpdate [SetDefaultTree]
 quietly WaveActivateNextPane
 add wave -noupdate /test/u_core/alu_mod/inst
@@ -74,7 +68,14 @@ add wave -noupdate /test/u_core/alu_mod/alu_rs2
 add wave -noupdate /test/u_core/alu_mod/alu_rd
 add wave -noupdate /test/u_core/alu_mod/alu_of
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {333 ns} 0}
+quietly WaveActivateNextPane
+add wave -noupdate /test/u_core/dmem_mod/inst_funct3
+add wave -noupdate /test/u_core/dmem_mod/rwaddr
+add wave -noupdate /test/u_core/dmem_mod/wdata
+add wave -noupdate /test/u_core/dmem_mod/rdata
+add wave -noupdate /test/u_core/dmem_mod/mem_rdata
+TreeUpdate [SetDefaultTree]
+WaveRestoreCursors {{Cursor 1} {9 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 336
 configure wave -valuecolwidth 139
