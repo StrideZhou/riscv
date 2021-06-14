@@ -52,7 +52,7 @@ alu u_alu(
 always @(*) begin
     alu_op = `ALU_ADD; //default op & others
     alu_rs1 = rs1_data;
-    alu_rs2 = imm_valid ? imm : rs2_data;
+    alu_rs2 = imm_valid ? imm : rs2_data;//default imm_valid = 1, imm = 0
     rd_data = alu_rd;
     br_en   = 1'b0;
     // br_addr = 32'd0;

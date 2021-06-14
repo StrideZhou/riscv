@@ -66,6 +66,9 @@ module inst_decoder(
                 endcase
             end
             `OPCODE_ALU: imm_valid = 1'b0;
+            default: begin
+                rd_wen    = 1'b0;
+            end
         endcase
     end
 
