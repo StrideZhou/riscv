@@ -9,9 +9,10 @@ add wave -noupdate /test/u_core/exIns_ren
 add wave -noupdate /test/u_core/exIns_addr
 add wave -noupdate -color Orchid /test/u_core/pc
 add wave -noupdate -color {Medium Orchid} /test/u_core/inst
-add wave -noupdate /test/u_core/ins_br_en
 add wave -noupdate -divider r1
+add wave -noupdate /test/u_core/ins_br_en
 add wave -noupdate /test/u_core/ins_br_addr
+add wave -noupdate /test/u_core/stall_r1
 add wave -noupdate -color Orchid /test/u_core/pc_r1
 add wave -noupdate -color {Medium Orchid} /test/u_core/inst_r1
 add wave -noupdate /test/u_core/stall
@@ -21,6 +22,7 @@ add wave -noupdate /test/u_core/radd2_r1
 add wave -noupdate -divider r2
 add wave -noupdate /test/u_core/rs1_data_r2
 add wave -noupdate /test/u_core/rs2_data_r2
+add wave -noupdate /test/u_core/stall_r2
 add wave -noupdate -color Orchid /test/u_core/pc_r2
 add wave -noupdate -color {Medium Orchid} /test/u_core/inst_r2
 add wave -noupdate /test/u_core/inst_funct3_r2
@@ -33,6 +35,7 @@ add wave -noupdate /test/u_core/rd_wen_r2
 add wave -noupdate /test/u_core/mem_rdata_valid_r2
 add wave -noupdate /test/u_core/alu_rd_data_r2
 add wave -noupdate -divider r3
+add wave -noupdate /test/u_core/stall_r3
 add wave -noupdate /test/u_core/br_en_r3
 add wave -noupdate /test/u_core/rd_wen_r3
 add wave -noupdate /test/u_core/mem_rdata_valid_r3

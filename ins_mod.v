@@ -3,7 +3,8 @@
 `define IMEM_Size     2 ** `IMEM_AWidth
 
 module ins_mod #(
-    parameter     pc_init = 32'h0000_0000
+    parameter     pc_init   = 32'h0000_0000 ,
+    parameter     inst_init = 32'h0000_0013
 )(
     input  clk,
     input  nrst,
@@ -11,7 +12,7 @@ module ins_mod #(
     input  br_en,
     input  [31:0] br_addr,
     output [31:0] pc,
-    output [31:0] ins_out,
+    output reg [31:0] ins_out,
 
     input  exIns_valid,
     input  [31:0]exIns_in,
@@ -26,6 +27,7 @@ module ins_mod #(
     reg ren;
     reg exIns_ren_r;
     wire Ins_ready;
+    wire stall_r;
 
     memory imem(
         .clk(clk),
@@ -49,9 +51,9 @@ assign Ins_ready = (exIns_ren & exIns_valid) | ren;
 
 // exIns_in_r: store vaild exIns
 always @ (posedge clk or negedge nrst)begin
-    if(~nrst) exIns_in_r <= 32'b0;
+    if(~nrst) exIns_in_r <= inst_init;
     else if( exIns_valid & exIns_ren) exIns_in_r <= exIns_in;
-    else if(~exIns_valid & exIns_ren) exIns_in_r <= 32'b0;
+    else if(~exIns_valid & exIns_ren) exIns_in_r <= inst_init;
 end
 
 // reg exIns_ren
@@ -61,7 +63,11 @@ always @(posedge clk or negedge nrst) begin
 end
 
 // ins_out MUX
-assign ins_out = exIns_ren_r ? exIns_in_r : rdata;
+syn_reg#(.W (  1 ))    stall_reg( clk,nrst,1'd1, stall, stall_r );
+always @(*) begin
+    if(stall_r) ins_out = inst_init;
+    else        ins_out = exIns_ren_r ? exIns_in_r : rdata;
+end
 
 // pc to Ins_addr decoder
 always @(*) begin:pcdec
