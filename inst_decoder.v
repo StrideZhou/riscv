@@ -56,7 +56,7 @@ module inst_decoder(
                 stall  = 1'b1;
             end
             `OPCODE_U:begin      //  U-type immediate
-                imm   = { inst[31:12], 10'b0};//! unsigned immediate 
+                imm   = { inst[31:12], 12'b0};//! unsigned immediate 
             end
             `OPCODE_ALU_IMM:begin
                 imm   = { {21{inst[31]}}, inst[30:20] };

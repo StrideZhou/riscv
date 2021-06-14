@@ -25,7 +25,7 @@ add wave -noupdate /test/u_core/rs2_data_r2
 add wave -noupdate /test/u_core/stall_r2
 add wave -noupdate -color Orchid /test/u_core/pc_r2
 add wave -noupdate -color {Medium Orchid} /test/u_core/inst_r2
-add wave -noupdate /test/u_core/inst_funct3_r2
+add wave -noupdate -radix binary /test/u_core/inst_funct3_r2
 add wave -noupdate /test/u_core/rd_addr_r2
 add wave -noupdate -radix symbolic -radixshowbase 0 /test/u_core/mem_opcode_r2
 add wave -noupdate /test/u_core/rf_wdata
@@ -75,7 +75,7 @@ add wave -noupdate /test/u_core/dmem_mod/wdata
 add wave -noupdate /test/u_core/dmem_mod/rdata
 add wave -noupdate /test/u_core/dmem_mod/mem_rdata
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {9 ns} 0}
+WaveRestoreCursors {{Cursor 1} {3 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 336
 configure wave -valuecolwidth 139
@@ -91,4 +91,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {38 ns}
+WaveRestoreZoom {0 ns} {23 ns}
