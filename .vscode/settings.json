@@ -1,6 +1,6 @@
 {
     // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
-    "verilog.linting.linter": "modelsim",
+    "verilog.linting.linter": "xvlog",
     "files.autoSave": "afterDelay",
     "terminal.integrated.enableBell": true,
     "files.autoSaveDelay": 1000,
