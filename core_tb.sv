@@ -33,14 +33,14 @@ module test;
             u_core.dmem_mod.dmem.mem2.mem[i] = 32'b0;
         end
 
-        #500 $stop; 
+        #530 $stop; 
     end
 
     always @(posedge clk ) begin
         if (pc == 32'h0000_0328) 
         // if (pc == 32'h0000_0174) 
         // if (pc == 32'h0000_00fc) 
-        #6 $stop;
+        #7 $stop;
     end
 core u_core(
     .clk          ( clk         ),
