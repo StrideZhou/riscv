@@ -120,7 +120,7 @@ syn_reg#(.W ( 32 ))     br_addr_reg3( clk,nrst,1'd1, br_addr_r2, br_addr_r3 );
 syn_reg#(.W (  5 ))     rd_addr_reg3( clk,nrst,1'd1, rd_addr_r2, rd_addr_r3 );
 syn_reg#(.W (  1 ))     rd_wen_reg3 ( clk,nrst,1'd1, rd_wen_r2 , rd_wen_r3  );
 syn_reg#(.W (  1 ))     mem_rdata_valid_reg3 ( clk,nrst,1'd1, mem_rdata_valid_r2 , mem_rdata_valid_r3   );
-syn_reg#(.W (  1 ))     stall_reg3  ( clk,nrst,1'd1, stall_r2  , stall_r3   );
+// syn_reg#(.W (  1 ))     stall_reg3  ( clk,nrst,1'd1, stall_r2  , stall_r3   );
 //*pip stage ----------write back---------------------
 assign ins_br_en    = br_en_r3;
 assign ins_br_addr  = br_addr_r3;
@@ -131,6 +131,6 @@ assign rf_wen   = rd_wen_r3;
 // br_addr  = alu_rd_data contain rd_data
 assign rf_wdata = mem_rdata_valid_r3 ? mem_rdata_r3 : br_addr_r3;
 
-assign stall = stall_r1 | stall_r2 | stall_r3;
+assign stall = stall_r1 | stall_r2;// | stall_r3;
 
 endmodule
