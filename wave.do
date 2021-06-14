@@ -26,7 +26,7 @@ add wave -noupdate /test/u_core/stall_r2
 add wave -noupdate -color Orchid /test/u_core/pc_r2
 add wave -noupdate -color {Medium Orchid} /test/u_core/inst_r2
 add wave -noupdate -radix binary /test/u_core/inst_funct3_r2
-add wave -noupdate /test/u_core/rd_addr_r2
+add wave -noupdate -color Gold -radix unsigned /test/u_core/rd_addr_r2
 add wave -noupdate -radix symbolic -radixshowbase 0 /test/u_core/mem_opcode_r2
 add wave -noupdate /test/u_core/rf_wdata
 add wave -noupdate /test/u_core/br_en_r2
@@ -46,23 +46,24 @@ add wave -noupdate /test/u_core/rd_addr_r3
 TreeUpdate [SetDefaultTree]
 quietly WaveActivateNextPane
 add wave -noupdate /test/u_core/regFile/wen
-add wave -noupdate /test/u_core/regFile/wadd
+add wave -noupdate -radix unsigned /test/u_core/regFile/wadd
 add wave -noupdate /test/u_core/regFile/wdata
-add wave -noupdate -format Event /test/u_core/regFile/reg_file
+add wave -noupdate -format Event -expand /test/u_core/regFile/reg_file
 TreeUpdate [SetDefaultTree]
 quietly WaveActivateNextPane
-add wave -noupdate /test/u_core/alu_mod/inst
-add wave -noupdate /test/u_core/alu_mod/rs1_data
+add wave -noupdate -color Orchid /test/u_core/alu_mod/pc
+add wave -noupdate -color {Medium Orchid} /test/u_core/alu_mod/inst
 add wave -noupdate /test/u_core/alu_mod/rs2_data
+add wave -noupdate /test/u_core/alu_mod/rs1_data
 add wave -noupdate /test/u_core/alu_mod/rd_data
-add wave -noupdate /test/u_core/alu_mod/pc
 add wave -noupdate /test/u_core/alu_mod/br_en
-add wave -noupdate /test/u_core/alu_mod/inst_opcode
-add wave -noupdate /test/u_core/alu_mod/inst_funct3
-add wave -noupdate /test/u_core/alu_mod/inst_funct7
+add wave -noupdate -color {Dark Orchid} -radix binary /test/u_core/alu_mod/inst_opcode
+add wave -noupdate -color {Dark Orchid} /test/u_core/alu_mod/inst_funct3
+add wave -noupdate -color {Dark Orchid} /test/u_core/alu_mod/inst_funct7
 add wave -noupdate /test/u_core/alu_mod/imm
 add wave -noupdate /test/u_core/alu_mod/imm_valid
-add wave -noupdate /test/u_core/alu_mod/alu_op
+add wave -noupdate -divider alu
+add wave -noupdate -radix symbolic /test/u_core/alu_mod/alu_op
 add wave -noupdate /test/u_core/alu_mod/alu_rs1
 add wave -noupdate /test/u_core/alu_mod/alu_rs2
 add wave -noupdate /test/u_core/alu_mod/alu_rd
@@ -75,10 +76,10 @@ add wave -noupdate /test/u_core/dmem_mod/wdata
 add wave -noupdate /test/u_core/dmem_mod/rdata
 add wave -noupdate /test/u_core/dmem_mod/mem_rdata
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {3 ns} 0}
+WaveRestoreCursors {{Cursor 1} {183 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 336
-configure wave -valuecolwidth 139
+configure wave -valuecolwidth 137
 configure wave -justifyvalue left
 configure wave -signalnamewidth 1
 configure wave -snapdistance 10
@@ -91,4 +92,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {23 ns}
+WaveRestoreZoom {161 ns} {201 ns}

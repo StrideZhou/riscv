@@ -37,8 +37,10 @@ module test;
     end
 
     always @(posedge clk ) begin
-        // if (pc == 32'h0000_033c) $stop;
-        if (pc == 32'h0000_00fc) $stop;
+        // if (pc == 32'h0000_0328) 
+        if (pc == 32'h0000_0174) 
+        // if (pc == 32'h0000_00fc) 
+        #6 $stop;
     end
 core u_core(
     .clk          ( clk         ),
