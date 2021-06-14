@@ -21,8 +21,8 @@ module core (
     wire [31:0] ins_br_addr;
     wire [31:0] pc_r1,inst_r1;
     wire        stall;
-    wire pc;
-    wire inst;
+    wire [31:0] pc;
+    wire [31:0] inst;
 
 ins_mod ins_mod(
     .clk         ( clk         ),
