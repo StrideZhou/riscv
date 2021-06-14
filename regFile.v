@@ -15,15 +15,15 @@ module regFile #(
     output reg [W-1:0] rs2
 );
 
-reg [W-1:0] reg_file [0:N-1]; // the register file
+reg [W-1:0] reg_file [1:N-1]; // the register file
 
 integer i;
 always @(posedge clk or negedge nrst) begin 
     if (~nrst) begin
-            for (i = 0; i < N; i = i + 1) reg_file[i] = 32'b0;
+            for (i = 1; i < N; i = i + 1) reg_file[i] = 32'b0;
     end
-    else if (wen) begin // not write to reg0
-        if(wadd != 5'b0) begin
+    else begin
+        if (wen && (wadd != 5'b0)) begin // not write to reg0
             reg_file[wadd] <= wdata;
         end
     end
@@ -35,8 +35,8 @@ always @(posedge clk or negedge nrst) begin
         rs2 <= 1'b0;
     end
     else begin 
-        rs1 <= reg_file[radd1];
-        rs2 <= reg_file[radd2];
+        rs1 <= (radd1 == 5'b0) ? 5'b0 : reg_file[radd1];
+        rs2 <= (radd2 == 5'b0) ? 5'b0 : reg_file[radd2];
     end
 end
 
