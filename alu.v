@@ -8,6 +8,7 @@ module alu(
 );
 
 always @(*) begin
+    overflow = 1'b0;
     case (op)
         `ALU_SLL:   rd = rs1 <<  $unsigned(rs2[4:0]);
         `ALU_SRL:   rd = rs1 >>  $unsigned(rs2[4:0]);
