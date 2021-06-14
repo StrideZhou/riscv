@@ -1,5 +1,5 @@
-//author:梁根源,stride
-//存储器读写模块
+//author:梁根�?,stride
+//存储器读写模�?
 `include "mem.vh"
 module memory (
 			clk,
@@ -52,6 +52,7 @@ assign  wen = op_code[2]; // wen == 0 ,write
 
 //store
 always @(*) begin
+    d = 32'b0;
 	case(op_code)
 		`StoreByte:begin
 			case(rwaddr[1:0])
