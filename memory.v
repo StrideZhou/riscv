@@ -80,7 +80,7 @@ always @(*) begin
 					bwen = 32'h0000_ff00;
 				end
 				2'b10:begin 
-					d[23:15] = wdata[7:0];
+					d[23:16] = wdata[7:0];
 					bwen = 32'h00ff_0000;
 				end 
 				2'b11:begin 
