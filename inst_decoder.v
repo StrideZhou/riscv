@@ -62,7 +62,6 @@ module inst_decoder(
                 imm   = { {21{inst[31]}}, inst[30:20] };
                 case (inst_funct3)
                     `FUNC3_SLL,`FUNC3_SRx: imm = { 27'd0, inst[24:20] };//! unsigned immediate
-                    `FUNC3_SLTU:           imm = { 20'b0, inst[31:20] };//! unsigned immediate
                 endcase
             end
             `OPCODE_ALU: imm_valid = 1'b0;
