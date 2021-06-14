@@ -20,7 +20,7 @@ module core (
     wire        ins_br_en;
     wire [31:0] ins_br_addr;
     wire [31:0] pc_r1,inst_r1;
-    wire        stall = 0;
+    wire        stall;
     wire pc;
     wire inst;
 
