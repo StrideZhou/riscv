@@ -9,9 +9,9 @@ module alu(
 
 always @(*) begin
     case (op)
-        `ALU_SLL:   rd = rs1 << $unsigned(rs2);
-        `ALU_SRL:   rd = rs1 >> $unsigned(rs2);
-        `ALU_SRA:   rd = rs1 >>> $unsigned(rs2);
+        `ALU_SLL:   rd = rs1 <<  $unsigned(rs2[4:0]);
+        `ALU_SRL:   rd = rs1 >>  $unsigned(rs2[4:0]);
+        `ALU_SRA:   rd = rs1 >>> $unsigned(rs2[4:0]);
         `ALU_ADD:   {overflow,rd} = rs1 + rs2;
         `ALU_SUB:   {overflow,rd} = rs1 - rs2;
         `ALU_SLT:   rd = {31'b0, rs1 < rs2};
@@ -22,7 +22,7 @@ always @(*) begin
         `ALU_AND:   rd = rs1 & rs2;
         `ALU_MUL:   rd = rs1 * rs2;
 
-        default:    rd = 32'hxxxx_xxxx;
+        default:    {overflow,rd} = 33'hx;
     endcase
 end
 

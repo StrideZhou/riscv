@@ -10,6 +10,8 @@ module inst_decoder(
     output  [4:0]  inst_rs1,
     output  [4:0]  inst_rs2,
     output reg     rd_wen,     //rd in instruction exist (write enable)
+
+    output reg     stall,      //stall for branch
  
     output reg signed [31:0] imm,   //! maybe signed immediate 
  // output reg        [31:0] imm_u, //unsign immediate
@@ -33,6 +35,7 @@ module inst_decoder(
         rd_wen = 1'b1;
         mem_opcode = `MemDoNothing;
         mem_rdata_valid = 1'b0;
+        stall = 1'b0;
         case (inst_opcode)
             `OPCODE_STORE:begin  //  S-type immediate
                 imm   = { {21{inst[31]}}, inst[30:25], inst[11:7] };
@@ -50,18 +53,21 @@ module inst_decoder(
                 imm   = { {20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0 };
                 ////imm_u = { 19'd0, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0 };
                 rd_wen = 1'b0;
+                stall  = 1'b1;
             end
             `OPCODE_U:begin      //  U-type immediate
-                imm   = { inst[31:12], 10'b0};//! unsigned immediate 
+                imm   = { inst[31:12], 12'b0};//! unsigned immediate 
             end
             `OPCODE_ALU_IMM:begin
                 imm   = { {21{inst[31]}}, inst[30:20] };
                 case (inst_funct3)
                     `FUNC3_SLL,`FUNC3_SRx: imm = { 27'd0, inst[24:20] };//! unsigned immediate
-                    `FUNC3_SLTU:           imm = { 20'b0, inst[31:20] };//! unsigned immediate
                 endcase
             end
             `OPCODE_ALU: imm_valid = 1'b0;
+            default: begin
+                rd_wen    = 1'b0;
+            end
         endcase
     end
 
