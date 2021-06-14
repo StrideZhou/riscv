@@ -42,10 +42,10 @@ always @ (posedge clk or negedge nrst)begin
     if(~nrst)                   pc_reg <= pc_init;
     else if(~stall & Ins_ready) pc_reg <= pc + 32'd4; 
 end
-assign pc = br_en ? br_addr:pc_reg;
+assign pc = br_en ? br_addr : pc_reg;
 
 // Ins_ready 
-assign Ins_ready = ~(exIns_ren ^ exIns_valid) | ~exIns_ren;
+assign Ins_ready = (exIns_ren & exIns_valid) | ren;
 
 // exIns_in_r: store vaild exIns
 always @ (posedge clk or negedge nrst)begin
