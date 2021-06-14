@@ -8,9 +8,9 @@ module mem( clk,
             q);
 
 input clk;
-input cen;
-input wen;
-input[31:0]bwen;
+input cen;       //active low
+input wen;       //active low
+input[31:0]bwen; //active low
 input[7:0]a;
 input[31:0]d;
 output reg [31:0]q;
@@ -32,7 +32,7 @@ end
 genvar j;
 generate for (j = 0; j < 32; j = j + 1) begin
     always @(posedge clk) begin:bitwrite
-       if((cen == 0) && (wen == 0)) mem[a][j] = bwen[j] ? d[j] : mem[a][j];
+       if((cen == 0) && (wen == 0)) mem[a][j] <= bwen[j] ?  mem[a][j] : d[j];
     end
 end
 endgenerate
