@@ -17,6 +17,7 @@ input [10:0] rwaddr;
 input [31:0] wdata;
 output[31:0] rdata;
 
+reg  [2:0]  op_code_r;
 reg  [31:0] rdata;
 wire [31:0] q_1;   //2 mem output
 wire [31:0] q_2;
@@ -50,7 +51,7 @@ assign  wen = op_code[2]; // wen == 0 ,write
 			 );
 
 always @(*) begin
-	case(op_code)
+	case(op_code_r)
     	`LoadByte:begin
 			case(rwaddr[1:0])
 				2'b00:rdata = {{24{q[ 7]}},{q[ 7: 0]}};
@@ -119,6 +120,7 @@ always@(*)begin		//rwaddr_r[10]==0 choose mem1, rwaddr_r[10]==1 choose mem2
 	if(rwaddr_r[10] == 0)	q = q_1;
 	else					q = q_2;
 end
+syn_reg#(.W (  3 ))    op_code_reg( clk,nrst,1'd1, op_code, op_code_r );
 
 always@(*)begin
 	cen_1 = 1;

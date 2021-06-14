@@ -85,8 +85,22 @@ add wave -noupdate -format Event /test/u_core/dmem_mod/dmem/mem1/mem
 add wave -noupdate -format Event /test/u_core/dmem_mod/dmem/mem2/mem
 add wave -noupdate {/test/u_core/dmem_mod/dmem/mem1/mem[63]}
 add wave -noupdate {/test/u_core/dmem_mod/dmem/mem1/mem[65]}
+add wave -noupdate -divider memory
+add wave -noupdate /test/u_core/dmem_mod/dmem/op_code
+add wave -noupdate /test/u_core/dmem_mod/dmem/rwaddr
+add wave -noupdate /test/u_core/dmem_mod/dmem/rwaddr_r
+add wave -noupdate /test/u_core/dmem_mod/dmem/wdata
+add wave -noupdate /test/u_core/dmem_mod/dmem/rdata
+add wave -noupdate /test/u_core/dmem_mod/dmem/q_1
+add wave -noupdate /test/u_core/dmem_mod/dmem/q_2
+add wave -noupdate /test/u_core/dmem_mod/dmem/q
+add wave -noupdate /test/u_core/dmem_mod/dmem/d
+add wave -noupdate /test/u_core/dmem_mod/dmem/bwen
+add wave -noupdate /test/u_core/dmem_mod/dmem/wen
+add wave -noupdate /test/u_core/dmem_mod/dmem/cen_1
+add wave -noupdate /test/u_core/dmem_mod/dmem/cen_2
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {409 ns} 0}
+WaveRestoreCursors {{Cursor 1} {419 ns} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 386
 configure wave -valuecolwidth 40
@@ -102,4 +116,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {183 ns} {227 ns}
+WaveRestoreZoom {409 ns} {453 ns}
