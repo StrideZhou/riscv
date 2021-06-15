@@ -1,5 +1,5 @@
-//author:梁根�?,stride
-//存储器读写模�?
+//author:梁根�?,stride
+//存储器读写模�?
 `include "mem.vh"
 module memory (
 			clk,
@@ -35,7 +35,7 @@ assign  wen = op_code[2]; // wen == 0 ,write
  mem  mem1( .clk (clk),
             .cen (cen_1),
             .wen (wen),
-            .bwen(~bwen), //! active low
+            .bwen( ~{{8{bwen[24]}}, {8{bwen[16]}}, {8{bwen[8]}}, {8{bwen[0]}}} ), //! active low
             .a   (rwaddr[9:2]),
             .d   (d),
             .q   (q_1)
@@ -44,7 +44,7 @@ assign  wen = op_code[2]; // wen == 0 ,write
  mem  mem2( .clk (clk),
             .cen (cen_2),
             .wen (wen),
-            .bwen(~bwen), //! active low
+            .bwen( ~{{8{bwen[24]}}, {8{bwen[16]}}, {8{bwen[8]}}, {8{bwen[0]}}} ), //! active low
             .a   (rwaddr[9:2]),
             .d   (d),
             .q   (q_2)
