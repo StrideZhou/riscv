@@ -24,14 +24,15 @@ module test;
             #1 clk = ~clk;
         end
     end
-    integer i;
+
+defparam u_core.ins_mod.imem.mem1.xpm_memory_spram_inst.MEMORY_INIT_FILE = "riscv-imem.mem";
+    // integer i;
     initial begin
-        $readmemh( "riscv.hex", u_core.ins_mod.imem.mem1.mem );
-        
-        for (i=0; i<256; i=i+1) begin
-            u_core.dmem_mod.dmem.mem1.mem[i] = 32'b0;
-            u_core.dmem_mod.dmem.mem2.mem[i] = 32'b0;
-        end
+        // $readmemh( "riscv.hex", u_core.ins_mod.imem.mem1.mem );
+        // for (i=0; i<256; i=i+1) begin
+        //     u_core.dmem_mod.dmem.mem1.mem[i] = 32'b0;
+        //     u_core.dmem_mod.dmem.mem2.mem[i] = 32'b0;
+        // end
 
         #530 $stop; 
     end
@@ -49,10 +50,10 @@ core u_core(
     .exIns_valid  ( exIns_valid ),
     .exIns_in     ( exIns_in    ),
     .exIns_ren    ( exIns_ren   ),
-    .exIns_addr   ( exIns_addr  ),
+    .exIns_addr   ( exIns_addr  )
 
-    .pc           ( pc          ),
-    .inst         ( inst        )
+//    .pc           ( pc          ),
+//    .inst         ( inst        )
 );
 
 
