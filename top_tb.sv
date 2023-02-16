@@ -1,4 +1,3 @@
-
 module top_tb (
     input clk,
     input rst
@@ -42,7 +41,7 @@ module top_tb (
 
     always @(posedge clk ) begin
         if (pc == 32'h0000_0328 || pc == 32'h0000_0174 || pc == 32'h0000_00fc)begin 
-            $display("============================");
+            $display("==PC=0x%H-begin==================", pc);
             for (i=0; i<8; i=i+1) begin
                 $write("@%H:\t", i*4 );
                 for (j=0; j<4; j=j+1) begin
@@ -50,6 +49,7 @@ module top_tb (
                 end
                 $write("\n");
             end
+            $display("==PC=0x%H-end====================", pc);
         end
         // #7 $finish;
     end
