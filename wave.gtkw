@@ -1,0 +1,35 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Thu Feb 16 11:10:53 2023
+[*]
+$scope module top 
+[dumpfile] "/home/adore-u20/riscv/wave.vcd"
+[dumpfile_mtime] "Thu Feb 16 10:52:57 2023"
+[dumpfile_size] 393393
+[optimize_vcd]
+[savefile] "/home/adore-u20/riscv/wave.gtkw"
+[timestart] 347
+[size] 1068 1847
+[pos] -2297 -206
+*-4.000000 375 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top_tb.
+[treeopen] top_tb.top_tb.
+[treeopen] top_tb.top_tb.u_core.
+[treeopen] top_tb.top_tb.u_core.ins_mod.
+[sst_width] 214
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 590
+@28
+top_tb.top_tb.u_core.ins_mod.clk
+top_tb.top_tb.u_core.ins_mod.nrst
+top_tb.top_tb.u_core.ins_mod.stall
+@22
+top_tb.top_tb.u_core.ins_mod.pc[31:0]
+top_tb.top_tb.u_core.ins_mod.br_addr[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.br_en
+@22
+top_tb.top_tb.u_core.inst[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
