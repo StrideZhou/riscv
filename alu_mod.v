@@ -24,6 +24,7 @@ module alu_mod (
     wire       [6:0]  inst_funct7;
 
     wire signed [31:0] imm;
+    wire               imm_valid;
 
 inst_decoder alu_inst_decoder(
     .inst        ( inst        ),
