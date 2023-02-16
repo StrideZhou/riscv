@@ -7,3 +7,8 @@ vsim.wlf
 transcript
 modelsim.ini
 wlft*
+
+obj_dir/
+backup/
+*.vcd
+*.fst

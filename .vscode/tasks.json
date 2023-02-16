@@ -4,34 +4,35 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "vlog build",
+            "label": "verilator build",
             "type": "shell",
             "command": [
-                // "vlib work ;",
-                "vlog -sv -nologo -quiet *.v;",
-                "vlog -sv -nologo -quiet *.sv;",
-                "vsim -c -quiet -debugDB -voptargs=+acc work.test -do exit "
+                "verilator -Wno-lint -Wno-style -Wno-context ",
+                "--trace ",
+                // "--trace-threads 2 ",
+                "-j 8 ",
+                "-sv --cc --exe --build sim_main.cpp top_tb.sv &&",
+
+                "./obj_dir/Vtop_tb +trace &&",
+
+                "gtkwave ./wave.vcd"
             ],
-            // "problemMatcher": { //for vsim
-            //     "owner": "verilog",
-            //     "fileLocation": [
-            //         "relative"
-            //     ],
-            //     "pattern": [
-            //         {
-            //             //"regexp": "^(.*):(\\d+):\\s+(.*)$",
-            //             "regexp": "^\\*\\* (((Error)|(Warning))( \\(suppressible\\))?: )(\\([a-z]+-[0-9]+\\) )?([^\\(]*)\\(([0-9]+)\\): (\\([a-z]+-[0-9]+\\) )?((((near|Unknown identifier|Undefined variable):? )?[\"\']([\\w:;\\.]+)[\"\'][ :.]*)?.*)",
-            //             "severity": 2,
-            //             "file": 7,
-            //             "line": 8,
-            //             "message": 10
-            //         }
-            //     ]
-            // },
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "gtkwave disp",
+            "type": "shell",
+            "command": [
+                "gtkwave ./wave.vcd"
+            ],
+            "group": {
+                "kind": "none",
+                "isDefault": false
+            },
+            "problemMatcher": []
         }
     ]
 }

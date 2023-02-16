@@ -1,16 +1,10 @@
 {
-    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
-    "verilog.linting.linter": "modelsim",
+    "editor.guides.bracketPairs": "active"
     "files.autoSave": "afterDelay",
     "terminal.integrated.enableBell": true,
     "files.autoSaveDelay": 1000,
-    "verilog.linting.modelsim.runAtFileLocation": true,
-    "verilog.languageServer": "slvs",
-
-    "verilog-format.path": "D:\\iverilog\\bin\\verilog-format.exe",
-    "verilog-format.setting": ".vscode\\.verilog-format.properties",
-    "verilog.logging.enabled": true,
-    "verilog.linting.iverilog.runAtFileLocation": true,
-    "verilog.linting.modelsim.work": "work",
-    "verilog.ctags.path": "",
+    "verilog.linting.verilator.arguments": "-Wall -sv",
+    "verilog.linting.linter": "verilator",
+    "verilog.linting.verilator.runAtFileLocation": true,
+    "verilog.linting.verilator.useWSL": true
 }
