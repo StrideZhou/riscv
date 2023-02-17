@@ -27,7 +27,8 @@ module top_tb (
     //     end
     // end
 
-    integer i,j;
+    reg [31:0] reg_file [0:31]; // the register file
+    integer i,j,k;
     initial begin
 
         $readmemh( "riscv.hex", u_core.ins_mod.imem.mem1.mem );
@@ -39,19 +40,39 @@ module top_tb (
         // #530 $finish; 
     end
 
-    always @(posedge clk ) begin
-        if (u_core.pc_r2 == 32'h0000_0328 + 8 || u_core.pc_r2 == 32'h0000_0174 + 8 || u_core.pc_r2 == 32'h0000_00fc + 8)begin 
-            $display("%0t ns\n==PC=0x%H-begin==================", $time, pc);
-            for (i=0; i<8; i=i+1) begin
-                $write("@%H:\t", i*4 );
-                for (j=0; j<4; j=j+1) begin
-                    $write("%H ",u_core.regFile.reg_file[ i*4 + j ]);
-                end
-                $write("\n");
-            end
-            $display("==PC=0x%H-end====================", pc);
-        end
+    reg [31:0] checkpoint[0:2];
+    assign checkpoint[0] = 32'h0000_00fc + 32'h8;
+    assign checkpoint[1] = 32'h0000_0174 + 32'h8;
+    assign checkpoint[2] = 32'h0000_0328 + 32'h8;
+    integer errflag = 0;
 
+    always @(posedge clk ) begin
+        for (k=0; k<3; k=k+1) begin
+            if (u_core.pc_r2 == checkpoint[k])begin 
+                $readmemh( $sformatf("regfile%0d.mem", k+1), reg_file );
+
+                $display("%0t ns\n==PC=0x%H-begin==================", $time, pc);
+                for (i=0; i<8; i=i+1) begin
+                    $write("@%H:\t", i*4 );
+                    for (j=0; j<4; j=j+1) begin
+                        $write("%H ",u_core.regFile.reg_file[ i*4 + j ]);
+                        errflag += (u_core.regFile.reg_file[ i*4 + j ] != reg_file[ i*4 + j]);
+                    end
+                    $write("\n");
+                end
+                $display("==PC=0x%H-end====================", pc);
+                $display("ERROR = %d", errflag);
+                if(k == 2 && errflag == 0) $display(
+" *******      **      ********  ********\n",
+"/**////**    ****    **//////  **////// \n",
+"/**   /**   **//**  /**       /**       \n",
+"/*******   **  //** /*********/*********\n",
+"/**////   **********////////**////////**\n",
+"/**      /**//////**       /**       /**\n",
+"/**      /**     /** ********  ******** \n",
+"//       //      // ////////  ////////  \n\n");
+            end
+        end
         if (u_core.pc_r2 == 32'h033c) $finish;
     end
 
