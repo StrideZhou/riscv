@@ -11,10 +11,10 @@
                 "--trace ",
                 // "--trace-threads 2 ",
                 "-j 8 ",
-                "--xml-output ./obj_dir/Vtop_tb.xml ",
+                //// "--xml-output ./obj_dir/Vtop_tb.xml ",
                 "-sv --cc --exe --build sim_main.cpp top_tb.sv &&",
 
-                "xml2stems -V ./obj_dir/Vtop_tb.xml ./obj_dir/Vtop_tb.stems &&",
+                //// "xml2stems -V ./obj_dir/Vtop_tb.xml ./obj_dir/Vtop_tb.stems &&", //https://github.com/gtkwave/gtkwave/issues/139
 
                 "./obj_dir/Vtop_tb +trace "
             ],
@@ -28,7 +28,9 @@
             "dependsOn": "verilator build",
             "type": "shell",
             "command": [
-                "gtkwave -o -z -c 8 -W -t ./obj_dir/Vtop_tb.stems -f ./wave.vcd wave.gtkw"
+                "gtkwave -o -z -c 8 -W",
+                //// "-t ./obj_dir/Vtop_tb.stems ", //https://github.com/gtkwave/gtkwave/issues/139
+                "-f ./wave.vcd ./wave.gtkw"
             ],
             "group": {
                 
