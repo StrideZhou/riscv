@@ -52,7 +52,7 @@ int main(int argc, char **argv, char **env){
 
 
 #endif
-    int sim_time = 1000;
+    int sim_time = 2000;
     top->clk = 0;
     // Simulate until $finish
     while (contextp->time() < sim_time && !contextp->gotFinish()) { 
@@ -90,6 +90,8 @@ int main(int argc, char **argv, char **env){
 #endif
 
     }
+
+
 
     top->final();
 

@@ -1,35 +1,231 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Thu Feb 16 11:10:53 2023
+[*] Fri Feb 17 09:10:45 2023
 [*]
-$scope module top 
 [dumpfile] "/home/adore-u20/riscv/wave.vcd"
-[dumpfile_mtime] "Thu Feb 16 10:52:57 2023"
-[dumpfile_size] 393393
+[dumpfile_mtime] "Fri Feb 17 09:06:40 2023"
+[dumpfile_size] 578891
 [optimize_vcd]
 [savefile] "/home/adore-u20/riscv/wave.gtkw"
-[timestart] 347
-[size] 1068 1847
-[pos] -2297 -206
-*-4.000000 375 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 485
+[size] 1713 954
+[pos] 1881 344
+*-2.755113 493 1271 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] top_tb.
 [treeopen] top_tb.top_tb.
 [treeopen] top_tb.top_tb.u_core.
 [treeopen] top_tb.top_tb.u_core.ins_mod.
-[sst_width] 214
-[signals_width] 134
+[treeopen] top_tb.top_tb.u_core.ins_mod.imem.
+[sst_width] 238
+[signals_width] 238
 [sst_expanded] 1
-[sst_vpaned_height] 590
+[sst_vpaned_height] 363
 @28
 top_tb.top_tb.u_core.ins_mod.clk
 top_tb.top_tb.u_core.ins_mod.nrst
 top_tb.top_tb.u_core.ins_mod.stall
 @22
 top_tb.top_tb.u_core.ins_mod.pc[31:0]
+top_tb.top_tb.u_core.pc_r1[31:0]
+@23
+top_tb.top_tb.u_core.pc_r2[31:0]
+@22
 top_tb.top_tb.u_core.ins_mod.br_addr[31:0]
 @28
 top_tb.top_tb.u_core.ins_mod.br_en
 @22
-top_tb.top_tb.u_core.inst[31:0]
+top_tb.top_tb.u_core.ins_mod.ins_out[31:0]
+top_tb.top_tb.u_core.ins_mod.pc[31:0]
+@c00022
+top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+@28
+(0)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(1)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(2)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(3)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(4)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(5)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(6)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(7)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(8)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(9)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(10)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(11)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(12)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(13)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(14)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(15)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(16)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(17)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(18)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(19)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(20)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(21)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(22)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(23)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(24)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(25)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(26)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(27)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(28)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(29)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(30)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+(31)top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+@1401200
+-group_end
+@28
+top_tb.top_tb.u_core.ins_mod.Ins_ready
+top_tb.top_tb.u_core.regFile.clk
+top_tb.top_tb.u_core.regFile.nrst
+@22
+top_tb.top_tb.u_core.regFile.radd1[4:0]
+top_tb.top_tb.u_core.regFile.radd2[4:0]
+top_tb.top_tb.u_core.regFile.reg_file[1][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[2][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[3][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[4][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[5][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[6][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[7][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[8][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[9][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[10][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[11][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[12][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[13][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[14][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[15][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[16][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[17][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[18][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[19][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[20][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[21][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[22][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[23][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[24][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[25][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[26][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[27][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[28][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[29][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[30][31:0]
+top_tb.top_tb.u_core.regFile.reg_file[31][31:0]
+top_tb.top_tb.u_core.regFile.rs1[31:0]
+top_tb.top_tb.u_core.regFile.rs2[31:0]
+top_tb.top_tb.u_core.regFile.wadd[4:0]
+top_tb.top_tb.u_core.regFile.wdata[31:0]
+@28
+top_tb.top_tb.u_core.regFile.wen
+@22
+top_tb.top_tb.u_core.ins_mod.ins_out[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.q_1[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.q_2[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.q[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem1.q[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem1.d[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem1.a[7:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem2.q[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.Ins_ready
+@22
+top_tb.top_tb.u_core.ins_mod.br_addr[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.br_en
+top_tb.top_tb.u_core.ins_mod.clk
+@22
+top_tb.top_tb.u_core.ins_mod.exIns_addr[31:0]
+top_tb.top_tb.u_core.ins_mod.exIns_in[31:0]
+top_tb.top_tb.u_core.ins_mod.exIns_in_r[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.exIns_ren
+top_tb.top_tb.u_core.ins_mod.exIns_ren_r
+top_tb.top_tb.u_core.ins_mod.exIns_valid
+@22
+top_tb.top_tb.u_core.ins_mod.imem.bwen[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.cen_1
+top_tb.top_tb.u_core.ins_mod.imem.cen_2
+top_tb.top_tb.u_core.ins_mod.imem.clk
+@22
+top_tb.top_tb.u_core.ins_mod.imem.d[31:0]
+@100022
+top_tb.top_tb.u_core.ins_mod.imem.mem1.a[7:0]
+@22
+top_tb.top_tb.u_core.ins_mod.imem.mem1.bwen[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.mem1.cen
+top_tb.top_tb.u_core.ins_mod.imem.mem1.clk
+@22
+top_tb.top_tb.u_core.ins_mod.imem.mem1.d[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem1.q[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.mem1.wen
+@22
+top_tb.top_tb.u_core.ins_mod.imem.mem2.a[7:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem2.bwen[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.mem2.cen
+top_tb.top_tb.u_core.ins_mod.imem.mem2.clk
+@22
+top_tb.top_tb.u_core.ins_mod.imem.mem2.d[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem2.q[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.mem2.wen
+top_tb.top_tb.u_core.ins_mod.imem.nrst
+top_tb.top_tb.u_core.ins_mod.imem.op_code[2:0]
+top_tb.top_tb.u_core.ins_mod.imem.op_code_r[2:0]
+@22
+top_tb.top_tb.u_core.ins_mod.imem.op_code_reg.INITIAL[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.op_code_reg.W[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.op_code_reg.clk
+top_tb.top_tb.u_core.ins_mod.imem.op_code_reg.next[2:0]
+top_tb.top_tb.u_core.ins_mod.imem.op_code_reg.nrst
+top_tb.top_tb.u_core.ins_mod.imem.op_code_reg.value[2:0]
+top_tb.top_tb.u_core.ins_mod.imem.op_code_reg.wr_en
+@22
+top_tb.top_tb.u_core.ins_mod.imem.q[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.q_1[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.q_2[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.cen_1
+top_tb.top_tb.u_core.ins_mod.imem.cen_2
+@22
+top_tb.top_tb.u_core.ins_mod.imem.mem1.d[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem1.q[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.mem1.a[7:0]
+top_tb.top_tb.u_core.ins_mod.imem.rdata[31:0]
+top_tb.top_tb.u_core.ins_mod.imem.rwaddr[10:0]
+top_tb.top_tb.u_core.ins_mod.imem.rwaddr_r[10:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.stall
+@22
+top_tb.top_tb.u_core.ins_mod.imem.wdata[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.imem.wen
+@22
+top_tb.top_tb.u_core.ins_mod.ins_out[31:0]
+top_tb.top_tb.u_core.ins_mod.inst_init[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.nrst
+@22
+top_tb.top_tb.u_core.ins_mod.pc[31:0]
+top_tb.top_tb.u_core.ins_mod.pc_init[31:0]
+top_tb.top_tb.u_core.ins_mod.pc_reg[31:0]
+top_tb.top_tb.u_core.ins_mod.rdata[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.ren
+top_tb.top_tb.u_core.ins_mod.stall
+top_tb.top_tb.u_core.ins_mod.stall_r
+@22
+top_tb.top_tb.u_core.ins_mod.stall_reg.INITIAL[31:0]
+top_tb.top_tb.u_core.ins_mod.stall_reg.W[31:0]
+@28
+top_tb.top_tb.u_core.ins_mod.stall_reg.clk
+top_tb.top_tb.u_core.ins_mod.stall_reg.next[0]
+top_tb.top_tb.u_core.ins_mod.stall_reg.nrst
+top_tb.top_tb.u_core.ins_mod.stall_reg.value[0]
+top_tb.top_tb.u_core.ins_mod.stall_reg.wr_en
 [pattern_trace] 1
 [pattern_trace] 0

@@ -40,8 +40,8 @@ module top_tb (
     end
 
     always @(posedge clk ) begin
-        if (pc == 32'h0000_0328 || pc == 32'h0000_0174 || pc == 32'h0000_00fc)begin 
-            $display("==PC=0x%H-begin==================", pc);
+        if (u_core.pc_r2 == 32'h0000_0328 + 8 || u_core.pc_r2 == 32'h0000_0174 + 8 || u_core.pc_r2 == 32'h0000_00fc + 8)begin 
+            $display("%0t ns\n==PC=0x%H-begin==================", $time, pc);
             for (i=0; i<8; i=i+1) begin
                 $write("@%H:\t", i*4 );
                 for (j=0; j<4; j=j+1) begin
@@ -51,7 +51,20 @@ module top_tb (
             end
             $display("==PC=0x%H-end====================", pc);
         end
-        // #7 $finish;
+
+        if (u_core.pc_r2 == 32'h033c) $finish;
+    end
+
+    initial begin
+        $display("%0t ns\n==mem-begin==================", $time);
+        for (i=0; i<32; i=i+1) begin
+            $write("@%H:\t", i*8 );
+            for (j=0; j<8; j=j+1) begin
+                $write("%H ",u_core.ins_mod.imem.mem1.mem [ i*8 + j ]);
+            end
+            $write("\n");
+        end
+        $display("==mem-end====================");
     end
 
 core u_core(
