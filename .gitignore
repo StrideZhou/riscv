@@ -10,5 +10,5 @@ wlft*
 
 obj_dir/
 backup/
-*.vcd
+*.vcd*
 *.fst
